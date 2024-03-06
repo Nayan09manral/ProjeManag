@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ProjeManag</string>
+    <string name="intoduction">Collaborate and Plan Together Across Multiple
+        Devices on Projemanag Minimalist Interface</string>
+    <string name="sign_up_discreption">Enter your email id and password,to register with us.</string>
+
+    <string name="please_click_back_again_to_exit">Please click back again to exit</string>
+    <string name="please_wait">Please wait</string>
+</resources>
