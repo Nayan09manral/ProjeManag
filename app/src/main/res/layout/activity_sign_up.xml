@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/img_1"
-    tools:context=".Activities.SignUpActivity">
+    tools:context=".activities.SignUpActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_sign_up_activity"
@@ -105,13 +105,13 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/btn_signin"
+                android:id="@+id/btn_signup"
                 android:layout_width="300dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginLeft="21dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/blue"
-                android:text="Sing In"/>
+                android:text="Sing Up"/>
 
 
 

@@ -1,10 +1,8 @@
-package com.example.projemanag.Activities
+package com.example.projemanag.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
-import androidx.appcompat.widget.Toolbar
 import com.example.projemanag.R
 import com.example.projemanag.databinding.ActivitySignUpBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -23,7 +21,7 @@ class SignUpActivity : BaseActivity() {
         setSupportActionBar(binding?.toolbarSignUpActivity)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        binding?.btnSignin?.setOnClickListener {
+        binding?.btnSignup?.setOnClickListener {
             registerUser()
         }
 
@@ -55,7 +53,8 @@ class SignUpActivity : BaseActivity() {
                                     "succesfully regigstered the email address $registeredEmail",
                             Toast.LENGTH_LONG
                         ).show()
-                        FirebaseAuth.getInstance().signOut()
+//                        FirebaseAuth.getInstance().signOut()
+//                        finish()
                     } else {
                         Toast.makeText(
                             this, task.exception!!.message, Toast.LENGTH_SHORT
@@ -86,8 +85,6 @@ class SignUpActivity : BaseActivity() {
         }
     }
 
-    // vnurgfugvbgit
-    //okdk
-    //ckmcvmv
+
 
 }

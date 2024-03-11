@@ -1,4 +1,4 @@
-package com.example.projemanag.Activities
+package com.example.projemanag.activities
 
 import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
@@ -8,11 +8,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.projemanag.R
-import com.example.projemanag.databinding.ActivityBaseBinding
-import com.example.projemanag.databinding.DialogProgressBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
-import org.w3c.dom.Text
 
 open class BaseActivity : AppCompatActivity() {
 

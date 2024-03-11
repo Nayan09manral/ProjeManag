@@ -1,10 +1,7 @@
-package com.example.projemanag.Activities
+package com.example.projemanag.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import com.example.projemanag.R
 import com.example.projemanag.databinding.ActivityIntroBinding
 
 class IntroActivity : BaseActivity() {
