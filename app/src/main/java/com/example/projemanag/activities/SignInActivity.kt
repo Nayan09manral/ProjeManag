@@ -8,53 +8,46 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.example.projemanag.R
+import com.example.projemanag.databinding.ActivitySignInBinding
+import com.example.projemanag.models.User
 import com.google.firebase.auth.FirebaseAuth
 
 class SignInActivity : BaseActivity() {
 
-//    private var binding : ActivitySignInBinding? = null
+    private var binding : ActivitySignInBinding? = null
 
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
-//        binding = ActivitySignInBinding.inflate(layoutInflater)
-//        setContentView(binding?.root)
+        binding = ActivitySignInBinding.inflate(layoutInflater)
+        setContentView(binding?.root)
 
         auth = FirebaseAuth.getInstance();
 
 
-//        setSupportActionBar(binding?.toolbarSignInActivity)
-//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        setSupportActionBar(binding?.toolbarSignInActivity)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val Btnsignin = findViewById<Button>(R.id.bt_signIn)
-        Btnsignin.setOnClickListener {
+
+
+
+        binding?.btSignIn?.setOnClickListener {
             signInRegisteredUser()
         }
-
-
-
-//        binding?.btSignIn?.setOnClickListener {
-//            signInRegisteredUser()
-//        }
 
     }
 
     private fun signInRegisteredUser(){
-        val etemail = findViewById<EditText>(R.id.et_email_signin)
-        val etpassword = findViewById<EditText>(R.id.et_password_signin)
-        val email: String = etemail.text.toString().trim{it <= ' ' }
-        val password: String = etpassword.text.toString().trim{it <= ' ' }
 
-//        val email: String = binding?.etEmailSignin?.text.toString().trim{ it <= ' '}
-//        val password: String = binding?.etPasswordSignin?.text.toString().trim { it <= ' ' }
+        val email: String = binding?.etEmailSignin?.text.toString().trim{ it <= ' '}
+        val password: String = binding?.etPasswordSignin?.text.toString().trim { it <= ' ' }
 
         if (validateFrom(email,password)){
             showProgressDialog(resources.getString(R.string.please_wait))
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
-                    hideProgressDialog()
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d("Sign in","createUserWithEmail:success")
@@ -99,5 +92,12 @@ class SignInActivity : BaseActivity() {
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
+    }
+
+    fun signInSuccess(user: User) {
+        hideProgressDialog()
+        startActivity(Intent(this,MainActivity::class.java))
+        finish()
+
     }
 }

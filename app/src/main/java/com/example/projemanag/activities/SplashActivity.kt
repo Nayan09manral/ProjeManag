@@ -8,6 +8,7 @@ import android.os.Handler
 import android.view.WindowManager
 import android.widget.TextView
 import com.example.projemanag.R
+import com.example.projemanag.firebase.FirestoreClass
 
 class SplashActivity : AppCompatActivity() {
 
@@ -18,8 +19,15 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         Handler().postDelayed({
-            val mainIntent = Intent(this, IntroActivity::class.java)
-            startActivity(mainIntent)
+
+            var curruntUserID = FirestoreClass().getCurrentUserId()
+
+            if (curruntUserID.isEmpty()){
+                startActivity(Intent(this, MainActivity::class.java))
+            }else{
+                startActivity(Intent(this,IntroActivity::class.java))
+            }
+
             finish() // Close the splash activity to prevent going back to it on back press
         }, SPLASH_TIME_OUT)
 

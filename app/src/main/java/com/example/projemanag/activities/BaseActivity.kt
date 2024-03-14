@@ -8,6 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.projemanag.R
+import com.example.projemanag.databinding.DialogProgressBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 
@@ -25,14 +26,16 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     fun showProgressDialog(text:String) {
+        val dialogBinding: DialogProgressBinding = DialogProgressBinding.inflate(layoutInflater)
         if (!::mProgressDialog.isInitialized) {
-            mProgressDialog.setContentView(R.layout.dialog_progress)
+            mProgressDialog = Dialog(this)
+            mProgressDialog.setContentView(dialogBinding.root)
         }
 
-       mProgressDialog.findViewById<TextView>(R.id.tv_progress_text)?.text = text
-
+        dialogBinding.tvProgressText.text = text
         mProgressDialog.show()
-    }
+        }
+
 
     fun hideProgressDialog(){
         mProgressDialog.dismiss()
