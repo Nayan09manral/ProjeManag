@@ -35,11 +35,11 @@ class SignUpActivity : BaseActivity() {
     }
 
     private  fun registerUser(){
-        val name: String = binding?.etnName?.text.toString().trim { it <= ' '}
+        val name = binding?.etnName?.text.toString().trim { it <= ' '}
 
-        val email: String = binding?.etEmail?.text.toString().trim { it <= ' '}
+        val email = binding?.etEmail?.text.toString().trim { it <= ' '}
 
-        val password: String = binding?.etPassword?.text.toString().trim { it <= ' ' }
+        val password = binding?.etPassword?.text.toString().trim { it <= ' ' }
 
         if(validateFrom(name, email, password)){
            showProgressDialog(resources.getString(R.string.please_wait))

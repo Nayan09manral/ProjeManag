@@ -46,7 +46,7 @@ class SignInActivity : BaseActivity() {
 
         if (validateFrom(email,password)){
             showProgressDialog(resources.getString(R.string.please_wait))
-            auth.createUserWithEmailAndPassword(email, password)
+            auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
@@ -63,6 +63,12 @@ class SignInActivity : BaseActivity() {
                         ).show()
 
                     }
+                }
+                .addOnFailureListener(this) {
+                    println("sign_in failure : ${it.message}")
+                }
+                .addOnCanceledListener(this) {
+                    println("sign_in cancelled")
                 }
 
         }

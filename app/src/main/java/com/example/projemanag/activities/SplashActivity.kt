@@ -5,6 +5,7 @@ import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.view.WindowManager
 import android.widget.TextView
 import com.example.projemanag.R
@@ -13,23 +14,25 @@ import com.example.projemanag.firebase.FirestoreClass
 class SplashActivity : AppCompatActivity() {
 
     private val SPLASH_TIME_OUT: Long = 2000
+    private val handler = Handler(Looper.getMainLooper())
+    private val currentUserID = FirestoreClass().getCurrentUserId()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
-
-        Handler().postDelayed({
-
-            var curruntUserID = FirestoreClass().getCurrentUserId()
-
-            if (curruntUserID.isEmpty()){
+    override fun onStart() {
+        super.onStart()
+        println("currentUserID :: $currentUserID")
+        handler.postDelayed({
+            if (currentUserID.isNotEmpty()){
                 startActivity(Intent(this, MainActivity::class.java))
             }else{
                 startActivity(Intent(this,IntroActivity::class.java))
             }
-
             finish() // Close the splash activity to prevent going back to it on back press
         }, SPLASH_TIME_OUT)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_splash)
 
         //hide status bar and set app to fullscreen
         window.setFlags(
